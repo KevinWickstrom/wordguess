@@ -10,6 +10,7 @@ void CurrentGame::reset(string newWord){
 	_gameWord = newWord;
 	_attemptsLeft = 6;
 	_playerWord = "";
+
 	for (int i=0; i<_gameWord.length(); i++){
 		_playerWord = _playerWord + "_";
 	}
@@ -34,9 +35,15 @@ char CurrentGame::promptUser(){
 	return letter;
 }
 
-void printWrongGuesses(){
+void CurrentGame::printWrongGuesses(){
 	// This will print out the letters the user guessed incorrectly and the number of attempts remaining
-
+	_wrongitr = _wrongChars.begin();
+	cout << "Wrong Letters: ";
+	while (_wrongitr != _wrongChars.end()){
+		cout << *_wrongitr << " ";
+		_wrongitr++;
+	}
+	cout << endl;
 }
 
 int placeLetter(char letter){
@@ -65,8 +72,11 @@ int CurrentGame::play(){
 	while (status == 0){
 		letter = promptUser();
 		status = placeLetter(letter);
+		if (status == -1)
+			_wrongChars.push_back(letter);
+		cout << "Number of attempts remaining: " << --_attemptsLeft << endl;
+		printWrongGuesses();
 	}
 	// status is checked and an appropriate message displayed
 	return 0;
 }
-
