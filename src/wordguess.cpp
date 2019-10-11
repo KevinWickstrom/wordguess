@@ -30,6 +30,8 @@ int main(){
 	char choice, letter;
 	bool done;
 	int wordidx;
+	int wins = 0;
+	int loss = 0;
 
 	srand((unsigned) time(NULL));
 	cout << "Would you like to play the WordGuess Game? Y/N" << endl;
@@ -37,15 +39,13 @@ int main(){
 	while ((choice != 'n') && (choice != 'N')){
 		wordidx = rand() % d.size();// get index subscript of next word to play
 		cg.reset(d.getWord(wordidx));
-		int result = cg.play();
-		if (result == 1){
-			cout << "You win!" << endl;
-			win++;
-		} else {
-			cout << "You lose..." << endl;
+
+		if(cg.play())
+			wins++;
+		else 
 			loss++;
-		}
-		cout<< "Wins: " + std::to_string(win) + " Losses: " + std::to_string(loss) << endl;
+		cout << "You have won: " << wins << " You have lost: " << loss << endl;
+
 		cout << "Would you like to play the WordGuess Game? Y/N" << endl;
 		cin >> choice;
 	}
