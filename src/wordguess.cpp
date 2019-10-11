@@ -22,6 +22,8 @@ using namespace std;
 int main(){
 	CurrentGame cg;
 	Dictionary d;
+	int win=0;
+	int loss=0;
 
 	d.buildDictionary();
 
@@ -37,11 +39,13 @@ int main(){
 	while ((choice != 'n') && (choice != 'N')){
 		wordidx = rand() % d.size();// get index subscript of next word to play
 		cg.reset(d.getWord(wordidx));
+
 		if(cg.play())
 			wins++;
 		else 
 			loss++;
 		cout << "You have won: " << wins << " You have lost: " << loss << endl;
+
 		cout << "Would you like to play the WordGuess Game? Y/N" << endl;
 		cin >> choice;
 	}
