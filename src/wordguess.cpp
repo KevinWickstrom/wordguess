@@ -32,7 +32,7 @@ int main(){
 	int wordidx;
 	int wins = 0;
 	int loss = 0;
-
+	// set seed of random number generator
 	srand((unsigned) time(NULL));
 	cout << "Would you like to play the WordGuess Game? Y/N" << endl;
 	cin >> choice;
