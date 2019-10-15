@@ -22,20 +22,30 @@ using namespace std;
 int main(){
 	CurrentGame cg;
 	Dictionary d;
+	int win=0;
+	int loss=0;
 
 	d.buildDictionary();
 
 	char choice, letter;
 	bool done;
 	int wordidx;
-
+	int wins = 0;
+	int loss = 0;
+	// set seed of random number generator
 	srand((unsigned) time(NULL));
 	cout << "Would you like to play the WordGuess Game? Y/N" << endl;
 	cin >> choice;
 	while ((choice != 'n') && (choice != 'N')){
 		wordidx = rand() % d.size();// get index subscript of next word to play
 		cg.reset(d.getWord(wordidx));
-		int result = cg.play();
+
+		if(cg.play())
+			wins++;
+		else 
+			loss++;
+		cout << "You have won: " << wins << " You have lost: " << loss << endl;
+
 		cout << "Would you like to play the WordGuess Game? Y/N" << endl;
 		cin >> choice;
 	}

@@ -23,6 +23,9 @@ class Dictionary{
 			// pre:  none
 			// post:  words loaded in memory or or severe error occured
 		inline string getWord(int i) const{
+			//inline function is function that cn be optimized at compile time-
+			//in source code, the fxn call is replaced by the contents of the function so it doesn't have to make a function call
+			//allposw the compiler to choose to optimize
 			return _words[i];
 		}
 		inline int size() const{

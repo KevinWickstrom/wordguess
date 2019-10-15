@@ -16,6 +16,7 @@ using namespace std;
 class CurrentGame {
 private:
 	string _playerWord;
+	//state of player's word
 	string _gameWord;
 	int _attemptsLeft;
 	vector<char> _wrongChars;

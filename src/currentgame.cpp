@@ -15,12 +15,14 @@ void CurrentGame::reset(string newWord){
 		_playerWord = _playerWord + "_";
 	}
 	_wrongChars.clear();
+	//clear is vecotr method that empties contents of vector
 }
 
 char CurrentGame::promptUser(){
 	char letter;
 	// display word to be guessed
 	cout << "here is the word to guess" << endl;
+	cout << "You have " << endl;
 	for (int i=0; i<_playerWord.length(); i++){
 		cout << _playerWord[i] << ' ';
 	}
@@ -35,7 +37,9 @@ char CurrentGame::promptUser(){
 	return letter;
 }
 
+
 void CurrentGame::printWrongGuesses(){
+
 	// This will print out the letters the user guessed incorrectly and the number of attempts remaining
 	_wrongitr = _wrongChars.begin();
 	cout << "Wrong Letters: ";

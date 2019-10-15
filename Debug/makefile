@@ -44,7 +44,7 @@ all: wordguess
 wordguess: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++  -o "wordguess" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -static -o "wordguess" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
